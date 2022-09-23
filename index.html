@@ -1,0 +1,164 @@
+
+<!-- saved from url=(0046)https://m.nczbonline.com/other/calculator.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" id="veConnect" async="" crossorigin="anonymous" src="./成本核算_files/capture-apps-5.0.0.js.下载"></script><script type="text/javascript" async="" src="./成本核算_files/analytics.js.下载"></script><script id="_1663861659656_6303" src="./成本核算_files/detect.json"></script><style type="text/css">
+    .input-num{
+        font-size:40px;
+        width: 280px;
+        height: 80px ;
+        border-radius: 20px;
+        background: #ebebf1;
+
+    }
+    .input-num-top{
+        font-size:40px;
+        width: 280px;
+        height: 80px ;
+        border-radius: 20px;
+        background: #ebebf1;
+        color: orangered;
+        font-weight:bold;
+        border-color: #72bbdb;
+    }
+    .span-desc{
+        font-size: 40px;
+        color: #401e24;
+    }
+    .span-desc-top{
+        font-size: 50px;
+        color: #ff1100;
+    }
+    .div-inpt{
+        width: 32%;
+        right: auto;
+    }
+    .div-span{
+        text-align: center;
+        width: 18%;
+        right: auto;
+    }
+
+</style>
+<script type="text/javascript" async="" src="./成本核算_files/fm.js.下载"></script><script async="" src="./成本核算_files/gtm.js.下载"></script><script type="text/javascript" async="" src="./成本核算_files/fengqu.log.js.下载"></script><script language="javascript" src="./成本核算_files/fengqu.track.js.下载" async=""></script><link rel="dns-prefetch" href="https://www.nczbonline.com/">
+    
+    <title>成本核算 </title>
+<script type="text/javascript" async="" src="./成本核算_files/tag.js.下载"></script></head>
+<body>
+<div>
+    <p style="text-align: center;font-size: 32px;color: red;font-weight: bold;">恒运专用</p>
+
+    <div style="height: 850px;width:100%; color: #9e231b;display: flex"></div>
+    <div style="height: 100px;display: flex;padding: 20px">
+        <div class="div-span">
+            <span class="span-desc-top">利润:</span>
+        </div>
+        <div class="div-inpt">
+            <input type="number" id="lirun" value="" class="input-num-top">
+        </div>
+        <div class="div-span">
+            <span class="span-desc-top">毛利率:</span>
+        </div>
+        <div class="div-inpt">
+            <input type="number" id="kongjian" value="" class="input-num-top">
+        </div>
+    </div>
+    <div style="height: 100px;display: flex;padding: 20px">
+        <div class="div-span">
+            <span class="span-desc">去税价:</span>
+        </div>
+        <div class="div-input">
+            <input type="number" id="qushuijia" value="" class="input-num">
+        </div>
+        <div class="div-span">
+            <span class="span-desc">税费:</span>
+        </div>
+        <div class="div-input">
+            <input type="number" id="shuifei" value="" class="input-num">
+        </div>
+    </div>
+    <div style="height: 10px;width:100%;background: #6c67dd;display: flex"></div>
+    <div style="height: 20px;width:100%;display: flex"></div>
+    <div style="height: 100px;display: flex;padding: 20px">
+        <div class="div-span">
+            <span class="span-desc">运费:</span>
+        </div>
+        <div class="div-input">
+            <input type="number" id="yunfei" value="7" onchange="recalculate()" class="input-num">
+        </div>
+
+        <div class="div-span">
+            <span class="span-desc">原价:</span>
+        </div>
+        <div class="div-input">
+            <input type="number" id="yemianjiage" value="" class="input-num">
+        </div>
+    </div>
+    <div style="height: 100px;display: flex;padding: 20px">
+
+        <div class="div-span">
+            <span class="span-desc">税率:</span>
+        </div>
+        <div class="div-input">
+            <select class="input-num" type="number" id="shuilv" onchange="recalculate()">
+                <option value="0.091">0.091</option>
+                <option value="0.231">0.231</option>
+            </select>
+<!--            <input type="number" id="shuilv" value="" onchange="recalculate()" class="input-num"/>-->
+        </div>
+        <div class="div-span">
+            <span class="span-desc">主播佣:</span>
+        </div>
+        <div class="div-input">
+            <input type="number" id="zhuboyongjin" value="" onchange="recalculate()" class="input-num">
+        </div>
+    </div>
+    <div style="height: 100px;display: flex;padding: 20px">
+
+        <div class="div-span">
+            <span class="span-desc"> 成本:</span>
+        </div>
+        <div class="div-input">
+            <input type="number" id="chengben" value="" onchange="recalculate()" class="input-num">
+        </div>
+        <div class="div-span">
+            <span class="span-desc">直播价:</span>
+        </div>
+        <div class="div-input">
+            <input type="number" id="zhuanxiangjia" onchange="recalculate()" value="" class="input-num">
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    function recalculate(value, row, index) {
+
+        var zhuanxiangjia =0;
+        var shuilv=0;
+        var chengben=0;
+        var yunfei=0;
+        var zhuboyongjin=0;
+
+        var zhuanxiangjia =document.getElementById("zhuanxiangjia").value;
+        var shuilv=document.getElementById("shuilv").value;
+        var chengben=document.getElementById("chengben").value;
+        var yunfei=document.getElementById("yunfei").value;
+        var zhuboyongjin=document.getElementById("zhuboyongjin").value;
+        // 直播专享价/(1+税率)
+        let shuilv1 = Number(1) + Number(shuilv);
+        var qushuijia = Number(zhuanxiangjia/(shuilv1)).toFixed(4);
+        document.getElementById("qushuijia").setAttribute("value",qushuijia);
+        var shuifei = Number(qushuijia*shuilv).toFixed(4);
+        document.getElementById("shuifei").setAttribute("value",shuifei);
+        var lirun = Number(zhuanxiangjia-zhuanxiangjia*zhuboyongjin-chengben-yunfei-shuifei-zhuanxiangjia*0.05).toFixed(4);
+        document.getElementById("lirun").setAttribute("value",lirun);
+        var kongjian = Number(lirun/zhuanxiangjia).toFixed(4);
+        document.getElementById("kongjian").setAttribute("value",kongjian);
+
+    }
+</script>
+<!-- endbuild -->
+
+
+<script type="text/javascript" id="">!function(){var b=document.createElement("script");b.type="text/javascript";b.async=!0;b.src="//configch2.veinteractive.com/tags/ED2F2CD0/3DD2/4B03/9034/C11CBD63D47F/tag.js";var a=document.getElementsByTagName("head")[0];a?a.appendChild(b,a):(a=document.getElementsByTagName("script")[0],a.parentNode.insertBefore(b,a))}();</script>
+</body></html>
