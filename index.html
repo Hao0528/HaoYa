@@ -150,7 +150,7 @@
         document.getElementById("qushuijia").setAttribute("value",qushuijia);
         var shuifei = Number(qushuijia*shuilv).toFixed(4);
         document.getElementById("shuifei").setAttribute("value",shuifei);
-        var lirun = Number(zhuanxiangjia-zhuanxiangjia*zhuboyongjin-chengben-yunfei-shuifei-qushuijia*0.05).toFixed(4);
+        var lirun = Number(zhuanxiangjia-qushuijia*zhuboyongjin-chengben-yunfei-shuifei-qushuijia*0.05).toFixed(4);
         document.getElementById("lirun").setAttribute("value",lirun);
         var kongjian = Number(lirun/zhuanxiangjia).toFixed(4);
         document.getElementById("kongjian").setAttribute("value",kongjian);
